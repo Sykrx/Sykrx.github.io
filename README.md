@@ -38,12 +38,12 @@ body {
 <h1>Finde alle Otter und klicke sie! 🦦</h1>
 
 <!-- Otter-Bilder einfügen -->
-<img src="Otter.png1" class="otter" style="top:50px; left:100px;" onclick="clickOtter(this)">
-<img src="Otter.png1" class="otter" style="top:150px; left:300px;" onclick="clickOtter(this)">
-<img src="Otter.png1" class="otter" style="top:250px; left:500px;" onclick="clickOtter(this)">
-<img src="Otter.png1" class="otter" style="top:350px; left:200px;" onclick="clickOtter(this)">
-<img src="Otter.png1" class="otter" style="top:100px; left:600px;" onclick="clickOtter(this)">
-<img src="Otter.png1" class="otter" style="top:400px; left:400px;" onclick="clickOtter(this)">
+<img src="otter.png" class="otter" style="top:50px; left:100px;" onclick="clickOtter(this)">
+<img src="otter.png" class="otter" style="top:150px; left:300px;" onclick="clickOtter(this)">
+<img src="otter.png" class="otter" style="top:250px; left:500px;" onclick="clickOtter(this)">
+<img src="otter.png" class="otter" style="top:350px; left:200px;" onclick="clickOtter(this)">
+<img src="otter.png" class="otter" style="top:100px; left:600px;" onclick="clickOtter(this)">
+<img src="otter.png" class="otter" style="top:400px; left:400px;" onclick="clickOtter(this)">
 
 <div id="message">Jess, ich liebe dich über alles! ❤️❤️❤️</div>
 
