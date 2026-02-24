@@ -1,56 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <title>Meine Website</title>
-  <style>
-    .otter { width: 100px; cursor: pointer; }
-    #menu { display: none; }
-  </style>
+<meta charset="UTF-8">
+<title>Für Jessica ❤️</title>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #b3e5fc; /* Babyblauer Hintergrund */
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.otter {
+  position: absolute;
+  width: 100px; /* Größe der Otter */
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.otter:hover {
+  transform: scale(1.1);
+}
+
+#message {
+  display: none;
+  font-size: 36px;
+  color: #ff4d6d;
+  margin-top: 50px;
+}
+
+</style>
 </head>
 <body>
 
-<div id="otter-container">
-  <img src="otter1.png" class="otter">
-  <img src="otter2.png" class="otter">
-  <img src="otter3.png" class="otter">
-  <img src="otter4.png" class="otter">
-  <img src="otter5.png" class="otter">
-  <img src="otter6.png" class="otter">
-</div>
+<h1>Finde alle Otter und klicke sie! 🦦</h1>
 
-<div id="menu">
-  <h1>Hauptmenü</h1>
-  <ul>
-    <li onclick="openSection('erinnerungen')">Erinnerungsbilder</li>
-    <li onclick="openSection('liebesnachrichten')">Liebesnachrichten</li>
-    <li onclick="openSection('musik')">Musik</li>
-    <li onclick="openSection('videos')">Videos</li>
-    <li onclick="openSection('überraschungen')">Überraschungen</li>
-  </ul>
-</div>
+<!-- Otter-Bilder einfügen -->
+<img src="otter1.jpg" class="otter" style="top:50px; left:100px;" onclick="clickOtter(this)">
+<img src="otter2.jpg" class="otter" style="top:150px; left:300px;" onclick="clickOtter(this)">
+<img src="otter3.jpg" class="otter" style="top:250px; left:500px;" onclick="clickOtter(this)">
+<img src="otter4.jpg" class="otter" style="top:350px; left:200px;" onclick="clickOtter(this)">
+<img src="otter5.jpg" class="otter" style="top:100px; left:600px;" onclick="clickOtter(this)">
+<img src="otter6.jpg" class="otter" style="top:400px; left:400px;" onclick="clickOtter(this)">
 
-<div id="erinnerungen" style="display:none;">Hier deine Erinnerungsbilder...</div>
-<div id="liebesnachrichten" style="display:none;">Hier deine Liebesnachrichten...</div>
+<div id="message">Jess, ich liebe dich über alles! ❤️❤️❤️</div>
 
 <script>
-let otters = document.querySelectorAll('.otter');
-let clicked = 0;
+let ottersClicked = 0;
 
-otters.forEach(otter => {
-  otter.addEventListener('click', () => {
-    otter.style.display = 'none';
-    clicked++;
-    if(clicked === 6) {
-      document.getElementById('otter-container').style.display = 'none';
-      document.getElementById('menu').style.display = 'block';
-    }
-  });
-});
-
-function openSection(id) {
-  document.querySelectorAll('div[id]').forEach(d => d.style.display = 'none');
-  document.getElementById('menu').style.display = 'block';
-  document.getElementById(id).style.display = 'block';
+function clickOtter(otter) {
+  otter.style.display = 'none'; // Otter verschwindet
+  ottersClicked++;
+  
+  if (ottersClicked === 6) { // Alle Otter geklickt
+    document.getElementById('message').style.display = 'block';
+    setTimeout(() => {
+      // Weiterleitung zur rosa Seite
+      window.location.href = 'rosa.html'; // <-- Hier deine rosa Seite angeben
+    }, 2000); // 2 Sekunden warten
+  }
 }
 </script>
 
