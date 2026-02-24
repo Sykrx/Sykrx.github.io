@@ -66,3 +66,18 @@ function clickOtter(otter) {
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Rosa Seite</title>
+<style>
+body { background-color: #ffc0cb; text-align:center; font-family:Arial; }
+h1 { margin-top:50px; color:#fff; }
+</style>
+</head>
+<body>
+<h1>Für Jessica ❤️</h1>
+<p>Danke, dass du so süß bist 😘</p>
+</body>
