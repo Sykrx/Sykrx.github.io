@@ -1,127 +1,56 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Für Jessica ❤️</title>
-
-<style>
-body {
-  margin: 0;
-  background: #b3e5fc; /* babyblau */
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
-/* Titel */
-h1 {
-  color: white;
-  margin-top: 30px;
-}
-
-/* Otter */
-.otter {
-  position: absolute;
-  width: 120px;
-  cursor: pointer;
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Schwebe-Animation */
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-25px); }
-  100% { transform: translateY(0); }
-}
-
-/* Liebesnachricht */
-#message {
-  display: none;
-  font-size: 42px;
-  color: #ff4d6d;
-  margin-top: 80px;
-  animation: glow 1.5s infinite alternate;
-}
-
-/* Glühen */
-@keyframes glow {
-  from { text-shadow: 0 0 10px white; }
-  to { text-shadow: 0 0 25px pink; }
-}
-
-/* Herzregen */
-.heart {
-  position: absolute;
-  color: red;
-  font-size: 24px;
-  animation: fall 3s linear forwards;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
-</style>
+  <title>Meine Website</title>
+  <style>
+    .otter { width: 100px; cursor: pointer; }
+    #menu { display: none; }
+  </style>
 </head>
-
 <body>
 
-<h1>Klicke alle Otter 🦦</h1>
+<div id="otter-container">
+  <img src="otter1.png" class="otter">
+  <img src="otter2.png" class="otter">
+  <img src="otter3.png" class="otter">
+  <img src="otter4.png" class="otter">
+  <img src="otter5.png" class="otter">
+  <img src="otter6.png" class="otter">
+</div>
 
-<!-- 6 Otter -->
-<img src="otter.png" class="otter" style="top:80px; left:100px;" onclick="clickOtter(this)">
-<img src="otter.png" class="otter" style="top:200px; left:300px;" onclick="clickOtter(this)">
-<img src="otter.png" class="otter" style="top:350px; left:500px;" onclick="clickOtter(this)">
-<img src="otter.png" class="otter" style="top:120px; left:700px;" onclick="clickOtter(this)">
-<img src="otter.png" class="otter" style="top:400px; left:200px;" onclick="clickOtter(this)">
-<img src="otter.png" class="otter" style="top:300px; left:900px;" onclick="clickOtter(this)">
+<div id="menu">
+  <h1>Hauptmenü</h1>
+  <ul>
+    <li onclick="openSection('erinnerungen')">Erinnerungsbilder</li>
+    <li onclick="openSection('liebesnachrichten')">Liebesnachrichten</li>
+    <li onclick="openSection('musik')">Musik</li>
+    <li onclick="openSection('videos')">Videos</li>
+    <li onclick="openSection('überraschungen')">Überraschungen</li>
+  </ul>
+</div>
 
-<div id="message">Jess ich liebe dich über alles! ❤️❤️❤️</div>
+<div id="erinnerungen" style="display:none;">Hier deine Erinnerungsbilder...</div>
+<div id="liebesnachrichten" style="display:none;">Hier deine Liebesnachrichten...</div>
 
 <script>
-let count = 0;
+let otters = document.querySelectorAll('.otter');
+let clicked = 0;
 
-function clickOtter(otter) {
-  // Herz-Explosion beim Klick
-  for (let i = 0; i < 6; i++) {
-    let heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.className = "heart";
-    heart.style.left = otter.offsetLeft + "px";
-    heart.style.top = otter.offsetTop + "px";
-    document.body.appendChild(heart);
-    
-    setTimeout(() => heart.remove(), 3000);
-  }
+otters.forEach(otter => {
+  otter.addEventListener('click', () => {
+    otter.style.display = 'none';
+    clicked++;
+    if(clicked === 6) {
+      document.getElementById('otter-container').style.display = 'none';
+      document.getElementById('menu').style.display = 'block';
+    }
+  });
+});
 
-  otter.style.display = "none";
-  count++;
-
-  if (count === 6) {
-    document.getElementById("message").style.display = "block";
-    
-    // Hintergrund wird rosa
-    setTimeout(() => {
-      document.body.style.background = "#ffc0cb";
-      heartRain();
-    }, 1200);
-  }
-}
-
-// Herzregen
-function heartRain() {
-  setInterval(() => {
-    let heart = document.createElement("div");
-    heart.innerHTML = "❤️";
-    heart.className = "heart";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.top = "-20px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 3000);
-  }, 200);
+function openSection(id) {
+  document.querySelectorAll('div[id]').forEach(d => d.style.display = 'none');
+  document.getElementById('menu').style.display = 'block';
+  document.getElementById(id).style.display = 'block';
 }
 </script>
 
