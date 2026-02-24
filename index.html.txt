@@ -70,7 +70,7 @@
 
   <!-- 2 Otter -->
   <img src="images/otter.png" class="otter" style="top:80px; left:100px;" onclick="clickOtter(this)">
-  <img src="images/0tter.png" class="otter" style="top:200px; left:300px;" onclick="clickOtter(this)">
+  <img src="images/otter.png" class="otter" style="top:200px; left:300px;" onclick="clickOtter(this)">
 
   <div id="message">Jess ich liebe dich über alles! ❤️❤️❤️</div>
 
