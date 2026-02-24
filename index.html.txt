@@ -69,8 +69,8 @@
   <h1>Klicke alle Otter 🦦</h1>
 
   <!-- 2 Otter -->
-  <img src="images/otter.png" class="otter" style="top:80px; left:100px;" onclick="clickOtter(this)">
-  <img src="images/otter.png" class="otter" style="top:200px; left:300px;" onclick="clickOtter(this)">
+  <img src="images/otter.png" class="otter" style="top:80px; left:100px;" onclick="clickotter(this)">
+  <img src="images/otter.png" class="otter" style="top:200px; left:300px;" onclick="clickotter(this)">
 
   <div id="message">Jess ich liebe dich über alles! ❤️❤️❤️</div>
 
