@@ -10,9 +10,8 @@
       overflow: hidden;
       font-family: Arial, sans-serif;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      position: relative;
+      height: 100vh;
     }
 
     h1 {
@@ -21,13 +20,13 @@
       font-size: 50px;
     }
 
-    /* Otter als Emoji */
+    /* Otter-Emojis */
     .otter {
       position: absolute;
       font-size: 80px;
       cursor: pointer;
-      animation: float 3s ease-in-out infinite, flyIn 1.5s forwards;
       user-select: none;
+      animation: float 3s ease-in-out infinite;
     }
 
     @keyframes float {
@@ -36,18 +35,15 @@
       100% { transform: translateY(0); }
     }
 
-    @keyframes flyIn {
-      from { transform: translateY(-150px) scale(0.5); opacity: 0; }
-      to { transform: translateY(0) scale(1); opacity: 1; }
+    /* Liebesnachricht */
+    #message {
+      display: none;
+      font-size: 42px;
+      color: #ff4d6d;
+      margin-top: 80px;
     }
 
-    
-
-    @keyframes glow {
-      from { text-shadow: 0 0 10px white; }
-      to { text-shadow: 0 0 25px pink; }
-    }
-
+    /* Herzregen */
     .heart {
       position: absolute;
       color: red;
@@ -60,7 +56,6 @@
     }
   </style>
 </head>
-
 <body>
 
   <h1>Klicke alle Otter 🦦</h1>
@@ -74,7 +69,28 @@
   <script>
     let count = 0;
 
-   
+    function clickOtter(otter) {
+      // Otter verschwinden beim Klick
+      otter.style.display = 'none';
+
+      // Herz-Explosion beim Klick
+      for (let i = 0; i < 2; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.className = "heart";
+        heart.style.left = otter.offsetLeft + "px";
+        heart.style.top = otter.offsetTop + "px";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3000);
+      }
+
+      count++;
+      if (count === 2) {
+        document.getElementById("message").style.display = "block";
+        // Hintergrund rosa + Herzregen
+        document.body.style.background = "#ffc0cb";
+        heartRain();
+      }
     }
 
     function heartRain() {
@@ -92,4 +108,3 @@
 
 </body>
 </html>
-
