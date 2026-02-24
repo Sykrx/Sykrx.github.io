@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Für Jess ❤️</title>
+<style>
+body {
+  margin: 0;
+  background: #b3e5fc;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  position: relative;
+  height: 100vh;
+}
+
+h1 {
+  color: white;
+  margin-top: 30px;
+}
+
+/* Otter Emoji */
+.otter {
+  position: absolute;
+  font-size: 80px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#message {
+  display: none;
+  font-size: 36px;
+  color: #ff4d6d;
+  margin-top: 80px;
+  max-width: 90%;
+  line-height: 1.4;
+}
+
+/* Herzregen */
+.heart {
+  position: absolute;
+  font-size: 24px;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(100vh); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<h1>Klick auf 2 Otter 🦦</h1>
+
+<div id="game"></div>
+
+<div id="message">
+Für meinen Otter und meinen absoluten Lieblingsmenschen, der mir die Welt bedeutet,  
+auch wenn ich nicht immer für ihn da sein kann :(  
+Jess, ich liebe dich über alles.
+</div>
+
+<script>
+let count = 0;
+const game = document.getElementById('game');
+const totalOtter = 12; // Jetzt werden 12 Otter gespawnt
+const otterNeeded = 2; // Nur 2 für den Wechsel
+
+// Funktion: Otter fallen mit leicht seitlicher Bewegung
+function spawnOtters() {
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  for (let i = 0; i < totalOtter; i++) {
+    const otter = document.createElement('div');
+    otter.className = 'otter';
+    otter.innerText = '🦦';
+
+    // Zufällige Startposition
+    const leftStart = Math.random() * (screenWidth - 100);
+    const topStart = -100;
+    const leftOffset = (Math.random() - 0.5) * 100; // seitliches Hüpfen
+    const topEnd = Math.random() * (screenHeight - 200);
+
+    otter.style.left = leftStart + 'px';
+    otter.style.top = topStart + 'px';
+
+    // Animation fallen + leicht seitlich
+    otter.animate([
+      { transform: `translate(0px, 0px)` },
+      { transform: `translate(${leftOffset}px, ${topEnd + 100}px)` }
+    ], {
+      duration: 1500,
+      easing: 'ease-out',
+      fill: 'forwards'
+    });
+
+    otter.onclick = () => clickOtter(otter);
+
+    game.appendChild(otter);
+  }
+}
+
+// Klick auf Otter
+function clickOtter(otter) {
+  otter.style.display = 'none';
+  count++;
+
+  // Herz-Explosion mit zufälligem Abprallen
+  for (let i = 0; i < 5; i++) {
+    const heart = document.createElement("div");
+    heart.innerText = '❤️';
+    heart.className = "heart";
+    heart.style.left = otter.offsetLeft + (Math.random()*60 - 30) + "px";
+    heart.style.top = otter.offsetTop + (Math.random()*60 - 30) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3000);
+  }
+
+  // Nur nach dem Klick auf die benötigten 2 Otter
+  if (count === otterNeeded) {
+    document.getElementById("message").style.display = 'block';
+    document.body.style.background = '#ffc0cb';
+    heartRain();
+  }
+}
+
+// Herzregen nach allen Ottern
+function heartRain() {
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.innerText = '❤️';
+    heart.className = 'heart';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.top = '-20px';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3000);
+  }, 200);
+}
+
+// Spiel starten
+spawnOtters();
+</script>
+
+</body>
+</html>
