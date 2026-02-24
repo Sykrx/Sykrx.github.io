@@ -34,8 +34,8 @@ h1 { color: white; margin-top: 30px; }
 
 <h1>Klicke alle Otter 🦦</h1>
 
-<img src="images/Otter.png" class="otter" style="top:80px; left:100px;" onclick="clickOtter(this)">
-<img src="images/Otter.png" class="otter" style="top:200px; left:300px;" onclick="clickOtter(this)">
+<img src="images/Otter.png1" class="otter" style="top:80px; left:100px;" onclick="clickOtter(this)">
+<img src="images/Otter.png1" class="otter" style="top:200px; left:300px;" onclick="clickOtter(this)">
 
 <div id="message">Jess ich liebe dich über alles! ❤️❤️❤️</div>
 
