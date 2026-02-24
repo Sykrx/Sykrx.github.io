@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <title>Für Jess ❤️</title>
   <style>
-    /* Body & Schrift */
     body {
       margin: 0;
-      background: #b3e5fc; /* babyblau */
+      background: #b3e5fc;
       overflow: hidden;
       font-family: Arial, sans-serif;
       text-align: center;
@@ -22,21 +21,35 @@
       font-size: 50px;
     }
 
-    /* Otter */
     .otter {
       position: absolute;
       width: 120px;
       cursor: pointer;
-      animation: float 3s ease-in-out infinite;
+      animation: float 3s ease-in-out infinite, flyIn 1.5s forwards;
     }
 
     @keyframes float {
       0% { transform: translateY(0); }
-      50% { transform: translateY(-25px); }
+      50% { transform: translateY(-15px); }
       100% { transform: translateY(0); }
     }
 
-    /* Liebesnachricht */
+    @keyframes flyIn {
+      from { transform: translateY(-150px) scale(0.5); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .shake {
+      animation: shake 0.5s;
+    }
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(10deg); }
+      50% { transform: rotate(-10deg); }
+      75% { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
+    }
+
     #message {
       display: none;
       font-size: 42px;
@@ -50,7 +63,6 @@
       to { text-shadow: 0 0 25px pink; }
     }
 
-    /* Herzregen */
     .heart {
       position: absolute;
       color: red;
@@ -69,16 +81,28 @@
   <h1>Klicke alle Otter 🦦</h1>
 
   <!-- 2 Otter -->
-  <img src="images/otter.png" class="otter" style="top:80px; left:100px;" onclick="clickotter(this)">
-  <img src="images/otter.png" class="otter" style="top:200px; left:300px;" onclick="clickotter(this)">
+  <img src="bilder/otter.png" class="otter" style="top:80px; left:100px;" onclick="clickOtter(this)">
+  <img src="bilder/otter.png" class="otter" style="top:200px; left:300px;" onclick="clickOtter(this)">
 
   <div id="message">Jess ich liebe dich über alles! ❤️❤️❤️</div>
 
+  <!-- Audio-Datei für Klick -->
+  <audio id="popSound" src="sounds/pop.mp3"></audio>
+
   <script>
     let count = 0;
+    const popSound = document.getElementById('popSound');
 
     function clickOtter(otter) {
-      // Herz-Explosion beim Klick
+      // Sound abspielen
+      popSound.currentTime = 0;
+      popSound.play();
+
+      // Wackel-Effekt
+      otter.classList.add('shake');
+      setTimeout(() => otter.style.display = 'none', 500);
+
+      // Herz-Explosion
       for (let i = 0; i < 2; i++) {
         let heart = document.createElement("div");
         heart.innerHTML = "❤️";
@@ -89,12 +113,9 @@
         setTimeout(() => heart.remove(), 3000);
       }
 
-      otter.style.display = "none";
       count++;
-
       if (count === 2) {
         document.getElementById("message").style.display = "block";
-        // Hintergrund wird rosa
         setTimeout(() => {
           document.body.style.background = "#ffc0cb";
           heartRain();
@@ -102,7 +123,6 @@
       }
     }
 
-    // Herzregen
     function heartRain() {
       setInterval(() => {
         let heart = document.createElement("div");
