@@ -21,11 +21,13 @@
       font-size: 50px;
     }
 
+    /* Otter als Emoji */
     .otter {
       position: absolute;
-      width: 120px;
+      font-size: 80px;
       cursor: pointer;
       animation: float 3s ease-in-out infinite, flyIn 1.5s forwards;
+      user-select: none;
     }
 
     @keyframes float {
@@ -80,25 +82,17 @@
 
   <h1>Klicke alle Otter 🦦</h1>
 
-  <!-- 2 Otter -->
-  <img src="bilder/otter.png" class="otter" style="top:80px; left:100px;" onclick="clickOtter(this)">
-  <img src="bilder/otter.png" class="otter" style="top:200px; left:300px;" onclick="clickOtter(this)">
+  <!-- 2 Otter Emojis -->
+  <div class="otter" style="top:80px; left:100px;" onclick="clickOtter(this)">🦦</div>
+  <div class="otter" style="top:200px; left:300px;" onclick="clickOtter(this)">🦦</div>
 
   <div id="message">Jess ich liebe dich über alles! ❤️❤️❤️</div>
 
-  <!-- Audio-Datei für Klick -->
-  <audio id="popSound" src="sounds/pop.mp3"></audio>
-
   <script>
     let count = 0;
-    const popSound = document.getElementById('popSound');
 
     function clickOtter(otter) {
-      // Sound abspielen
-      popSound.currentTime = 0;
-      popSound.play();
-
-      // Wackel-Effekt
+      // Wackeln beim Klick
       otter.classList.add('shake');
       setTimeout(() => otter.style.display = 'none', 500);
 
