@@ -7,31 +7,26 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #b3e5fc; /* Babyblauer Hintergrund */
+  background-color: #b3e5fc;
   overflow: hidden;
   font-family: Arial, sans-serif;
-  text-align: center;
 }
 
 .otter {
   position: absolute;
-  width: 100px; /* Größe der Otter */
+  width: 100px;
   cursor: pointer;
-  transition: transform 0.3s;
+  animation: float 3s ease-in-out infinite;
 }
 
-.otter:hover {
-  transform: scale(1.1);
+/* Schwebe-Animation */
+@keyframes float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
 }
-
-#message {
-  display: none;
-  font-size: 36px;
-  color: #ff4d6d;
-  margin-top: 50px;
-}
-
 </style>
+
 </head>
 <body>
 
